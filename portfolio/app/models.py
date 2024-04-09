@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 from django.db import models
@@ -57,16 +58,11 @@ class Experience(models.Model):
 
 
 class Skills(models.Model):
-    title=models.CharField(max_length=200)
-    rateSkill_1to100=models.PositiveBigIntegerField()
+    skills=RichTextField(config_name='custom_config')
 
     class Meta:
-        ordering =['-id',]
+        verbose_name_plural = "Skills"
 
-
-    def __str__(self):
-        return self.title
-    
         
         
 projecttype =(
@@ -89,7 +85,7 @@ class Portfolio(models.Model):
     short_description=models.TextField()
 
     class Meta:
-        ordering =['-id',]
+        ordering =['id',]
         
     def __str__(self):
         return self.projectName

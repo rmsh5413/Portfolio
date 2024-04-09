@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!91h(cb5x-jxp@_e4ipgtyqo$i=_o2lf&mj%_o0kcjr(7-t6^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.18.97']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
 
 # Application definition
@@ -38,8 +38,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'ckeditor'
 ]
+
+
+CKEDITOR_CONFIGS = {
+    'custom_config': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+        'extraPlugins': 'autogrow',
+        'autoGrow_minHeight': 300,
+        'autoGrow_maxHeight': 600,
+        'toolbar_full': [
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Blockquote']},
+            {'name': 'styles', 'items': ['Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'SpecialChar']},
+            {'name': 'tools', 'items': ['Maximize']},
+            {'name': 'document', 'items': ['Source']},
+        ],
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,12 +158,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST="smtp.gmail.com"
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'rmshthapa987@gmail.com'
-EMAIL_HOST_PASSWORD = 'edywdeyxlmqdwooe'
+EMAIL_HOST_USER = "pratimabudhathoki999@gmail.com" 
+EMAIL_HOST_PASSWORD = "beqpkawqepfbxtjm"
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False  # Set to True if you use SSL
 
-DEFAULT_FROM_EMAIL = 'rmshthapa987@gmail.com'
+
+
+DEFAULT_FROM_EMAIL = 'pratimabudhathoki999@gmail.com'

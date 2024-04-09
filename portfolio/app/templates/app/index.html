@@ -18,7 +18,11 @@
     <link href="{% static 'app/assets/css/style.css'%}" rel="stylesheet">
 </head>   
 <!-- Body Start -->
-
+<style>
+    .rounded-image {
+        border-radius: 20px; /* Adjust the border radius as needed */
+    }
+</style>
 <body>
     <!-- Header Top -->
     <header class="main-header d-lg-none">
@@ -26,7 +30,7 @@
             <!-- Brand -->
             <div class="logo">
                 <a class="navbar-brand" href="#">
-                <h1> Ramesh</h1>
+                <h1> Pratima</h1>
                     {% comment %} <img class="logo-dark" title="" alt="" src="{{intro.logo.url}}">
                     <img class="logo-light" title="" alt="" src="{{intro.logo.url}}"> {% endcomment %}
                 </a>
@@ -145,7 +149,7 @@
                         <div class="home-intro">
                             <h6>👋 Hi, I’ m</h6>
                             <h1>{{intro.fullname}} </h1>
-                            <h2>I'm a <span id="type-it"></span></h2>
+                            {% comment %} <h2>I'm a <span id="type-it"></span></h2> {% endcomment %}
                             <p class="pe-lg-5">{{intro.short_Intro}}</p>
                             <div class="btn-bar">
                                 <a class="px-btn px-btn-theme" href="{{intro.cv.url}}">Download cv <i class="bi-download"></i> </a>
@@ -162,7 +166,7 @@
                             </div>
                             <img src="{{intro.image.url}}" title="" alt=""style="
                             height: 636px;
-                            width: 635px;
+                            width: 550px;
                             object-fit: cover;
                         ">
                         </div>
@@ -231,10 +235,38 @@
                                         <ul>
                                             <li>
                                                 <div class="a-icon">
+                                                    <i class="fab fa-github"></i>
+                                                </div>
+                                                <div class="a-text">
+                                                    <a class="text-reset stretched-link" href="{{about.github}}" target=_blank>Github</a>
+                                                </div>
+                                            </li> 
+                                            <li>
+                                                <div class="a-icon">
+                                                    <i class="fab fa-linkedin"></i>
+                                                </div>
+                                                <div class="a-text">
+                                                    <a class="text-reset stretched-link" href="{{about.linkendinUrl}}" target=_blank>Linkedin</a>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="a-icon">
                                                     <i class="fab fa-instagram"></i>
                                                 </div>
                                                 <div class="a-text">
                                                     <a class="text-reset stretched-link" href="{{about.instagramUrl}}" target=_blank>Instagram</a>
+                                                </div>
+                                            </li>
+                                        
+                                   
+                         
+                                            <li>
+                                                <div class="a-icon">
+                                                    <i class="fab fa-facebook"></i>
+                                                </div>
+                                                <div class="a-text">
+                                                    <a class="text-reset stretched-link" href="{{about.facebookUrl}}" target=_blank>Facebook</a>
                                                 </div>
                                             </li>
                                             <li>
@@ -243,15 +275,6 @@
                                                 </div>
                                                 <div class="a-text">
                                                     <a class="text-reset stretched-link"href="mailto:{{about.gmail}}" target=_blank>Mail Me</a>
-                                                </div>
-                                            </li>
-                                     
-                                            <li>
-                                                <div class="a-icon">
-                                                    <i class="fa fa-map"></i>
-                                                </div>
-                                                <div class="a-text">
-                                                    <a class="text-reset stretched-link" href="{{about.locationUrl.url}}" target=_blank>Meet Me</a>
                                                 </div>
                                             </li>
                                             <li>
@@ -271,13 +294,14 @@
                                     </div>
                                     <div class="skills">
                                         {% for item in skills %}
-                                        <div class="skill-lt">
-                                            <h6 class="dark-color">{{item.title}}</h6>
-                                            <div class="skill-bar">
-                                                <div class="skill-bar-in" role="progressbar" aria-valuenow="{{item.rateSkill_1to100}}" aria-valuemin="0" aria-valuemax="100">
+                                      
+                                            {% comment %} <h6 class="dark-color">{{item.title}}</h6> {% endcomment %}
+                                            <div class="skill-lt" style="margin-top:-20px">
+                                                <p> {{item.skills|safe}}</p>
+                                                {% comment %} <div class="skill-bar-in" role="progressbar" aria-valuenow="{{item.rateSkill_1to100}}" aria-valuemin="0" aria-valuemax="100">
                                                     <span>{{item.rateSkill_1to100}}%</span>
-                                                </div>
-                                            </div>
+                                                </div> {% endcomment %}
+                                          
                                         </div>
                                         {%endfor%}
                                      
@@ -366,9 +390,10 @@
                     </h3>
                 </div>
                 <div class="lightbox-gallery">
-                    <div class="row g-3 g-lg-4 portfolio-content">
+
+                         <div class="row g-3 g-lg-4 portfolio-content d-flex justify-content-center">
                         {% for item in porfolio %}
-                        <div class="col-sm-6 col-lg-4 grid-item" style="width:270px">
+                        <div class="col-sm-6 col-lg-4 grid-item mx-3" style="width:275px;">
                             <div class="portfolio-box">
                                 <div class="portfolio-text">
                                     <h6>{{item.projectType}}</h6>
@@ -391,6 +416,7 @@
                         {%endfor%}
                 
                     </div>
+                 
                 </div>
             </div>
         </section>
@@ -405,19 +431,35 @@
                 <div id="" class="">
                     <div class="single-project-box">
                         <div class="row align-items-start p-5" >
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none d-md-block">
                                 <div class="row g-2">
-                                    <div class="col-6" >
-                                        <img class="border" src="{{item.image.url}}" style="width: 212px;height: 350px; margin-left:23px"  title="" alt="">
+                                    <div class="col-6">
+                                        <img class="rounded-image border border-primary" src="{{item.image.url}}" style="width: 212px; height: 350px; margin-left: 23px;" title="" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <img class="border" src="{{item.image2.url}}"style="width: 212px;height: 350px;" title="" alt="">
+                                        <img class="rounded-image border border-primary" src="{{item.image2.url}}"style="width: 212px;height: 350px;" title="" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <img class="border" src="{{item.image3.url}}"style="width: 212px;height: 350px;margin-left:23px;" title="" alt="">
+                                        <img class="rounded-image border border-primary" src="{{item.image3.url}}"style="width: 212px;height: 350px;margin-left:23px;" title="" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <img class="border" src="{{item.image4.url}}" style="width: 212px;height: 350px;"title="" alt="">
+                                        <img class="rounded-image border border-primary" src="{{item.image4.url}}" style="width: 212px;height: 350px;"title="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 d-md-none d-sm-block">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <img class="rounded-image border border-primary" src="{{item.image.url}}" style=" height: 200px; " title="" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <img class="rounded-image border border-primary" src="{{item.image2.url}}"style="height: 200px; " title="" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <img class="rounded-image border border-primary" src="{{item.image3.url}}"style="height: 200px;" title="" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <img class="rounded-image border border-primary" src="{{item.image4.url}}" style="height: 200px; "title="" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -520,19 +562,19 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">First name</label>
-                                            <input name="name" id="name" placeholder="Name *" class="form-control" type="text">
+                                            <input name="name" id="name" placeholder="Name *" class="form-control" required type="text">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">Your Email</label>
-                                            <input name="email" id="email" placeholder="Email *" class="form-control" type="email">
+                                            <input name="email" id="email" placeholder="Email *" class="form-control"required type="email">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label">Subject</label>
-                                            <input name="subject" id="subject" placeholder="Subject *" class="form-control" type="text">
+                                            <input name="subject" id="subject" placeholder="Subject *" class="form-control"required type="text">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -588,7 +630,7 @@
                     <a href="{{about.linkendinUrl}}"target=_blank><i class="fab fa-linkedin"></i></a>
                 </li>
             </ul>
-            <p class="copyright">© 2024 copyright all right reserved by Ramesh Thapa</p>
+            <p class="copyright">© 2024 copyright all right reserved by Pratima Budhathoki</p>
         </div>
     </footer>
     <!-- End Footer -->
